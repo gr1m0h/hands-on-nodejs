@@ -1,0 +1,599 @@
+> node                                                                    [main]
+Welcome to Node.js v18.4.0.
+Type ".help" for more information.
+
+> const foo = 'foo'
+undefined
+
+> let bar = 'bar'
+undefined
+
+> foo = 'foo2'
+Uncaught TypeError: Assignment to constant variable.
+
+> bar = 'bar2'
+'bar2'
+
+> const foo = 'foo3'
+Uncaught SyntaxError: Identifier 'foo' has already been declared
+
+> let bar = 'bar3'
+Uncaught SyntaxError: Identifier 'bar' has already been declared
+
+> { const foo = 'foo4' }
+undefined
+
+> { let bar = 'bar4' }
+undefined
+
+Uncaught SyntaxError: Unexpected identifier
+
+> function add1(a, b) {return a + b}
+undefined
+
+> const add2 = function (a, b) { return a + b }
+undefined
+
+> const add3 = function addFn(a, b) { return a + b }
+undefined
+
+> add1.name
+'add1'
+
+> add2.name
+'add2'
+
+> add3.name
+'addFn'
+
+> const add4 = (a, b) => { return a + b }
+undefined
+
+> const add5 = (a, b) => a + b
+undefined
+
+> const addOne = a => a + 1
+undefined
+
+> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+console.log(add6(1,2))
+console.log(add7(1,2))
+function add6(a, b) {
+  return a + b
+}
+const add7 = (a, b) => a + b
+
+3
+Uncaught ReferenceError: Cannot access 'add7' before initialization
+
+> const obj1 = { propA: 1, propB: 2 }
+undefined
+
+> obj1.propA
+1
+
+> obj1['propA']
+1
+
+> obj1.propC = 3
+3
+
+> obj1
+{ propA: 1, propB: 2, propC: 3 }
+
+> delete obj1.propC
+true
+
+> obj1
+{ propA: 1, propB: 2 }
+
+> obj2
+{ propA: 1, propB: 2, propC: 3 }
+
+> const { propA, ...obj3 } = obj2
+undefined
+
+> obj2
+{ propA: 1, propB: 2, propC: 3 }
+
+> obj3
+{ propB: 2, propC: 3 }
+
+> const obj4 = { probB: 'b', propD: 'd' }
+undefined
+
+> { ...obj2, [obj4.propB + obj2.propC]: 'abc', ...obj4, propA: true}
+{ propA: true, propB: 2, propC: 3, NaN: 'abc', probB: 'b', propD: 'd' }
+
+> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+const price = {
+  value: 100,
+  get withTax() {
+    return Math.floor(this.value * 1.1)
+  },
+  set withTax(withTax) {
+    this.value = Math.ceil(withTax / 1.1 )
+  }
+}
+undefined
+
+> price.withTax
+110
+
+> price.withTax = 333
+333
+
+> price.withTax
+333
+
+> price.value
+303
+
+> Object.keys(obj2)
+Uncaught ReferenceError: obj2 is not defined
+
+> const obj1 = { propA: 1, propB: 2 }
+undefined
+
+> const obj2 = { ...obj1, propC: 3 }
+undefined
+
+> Object.keys(obj2)
+[ 'propA', 'propB', 'propC' ]
+
+> Object.values(obj2)
+[ 1, 2, 3 ]
+
+> Object.entries(obj2)
+[ [ 'propA', 1 ], [ 'propB', 2 ], [ 'propC', 3 ] ]
+
+> const arr1 = [ 'foo', 'bar' ]
+undefined
+
+> arr1.length
+2
+
+> arr1[1]
+'bar'
+
+> arr1.indexOf('bar')
+1
+
+> arr1.indexOf('baz')
+-1
+
+> arr1.includes('bar')
+true
+
+> arr1.includes('baz')
+false
+
+> arr1.join('-')
+'foo-bar'
+
+> arr1.join()
+'foo,bar'
+
+> arr1.push('baz')
+3
+
+> arr1
+[ 'foo', 'bar', 'baz' ]
+
+> arr1.push('a', 'b', 'c')
+6
+
+> arr1
+[ 'foo', 'bar', 'baz', 'a', 'b', 'c' ]
+
+> arr1.pop()
+'c'
+
+> arr1
+[ 'foo', 'bar', 'baz', 'a', 'b' ]
+
+> arr1.unshift('qux')
+6
+
+> arr1
+[ 'qux', 'foo', 'bar', 'baz', 'a', 'b' ]
+
+> arr1.unshift('d', 'e', 'f')
+9
+
+> arr1
+[
+  'd',   'e',   'f',
+  'qux', 'foo', 'bar',
+  'baz', 'a',   'b'
+]
+
+> arr1.shift()
+'d'
+
+> arr1
+[
+  'e',   'f',   'qux',
+  'foo', 'bar', 'baz',
+  'a',   'b'
+]
+
+> const arr2 = ['foo', 'bar', 'baz']
+undefined
+
+> const arr3 = ['a', ...arr2, 'b', 'c']
+undefined
+
+> arr3
+[ 'a', 'foo', 'bar', 'baz', 'b', 'c' ]
+
+> arr2
+[ 'foo', 'bar', 'baz' ]
+
+> const [head1, head2, ...arr4] = arr2
+undefined
+
+> arr4
+[ 'baz' ]
+
+> arr2
+[ 'foo', 'bar', 'baz' ]
+
+> const [...arr5, last] = arr2
+const [...arr5, last] = arr2
+       ^^^^^^^
+
+Uncaught SyntaxError: Rest element must be last element
+
+> arr2.slice(0, 2)
+[ 'foo', 'bar' ]
+
+> arr2.slice(0, -1)
+[ 'foo', 'bar' ]
+
+> arr2.slice(2)
+[ 'baz' ]
+
+> arr2.slice()
+[ 'foo', 'bar', 'baz' ]
+
+> arr2
+[ 'foo', 'bar', 'baz' ]
+
+> arr2.sort()
+[ 'bar', 'baz', 'foo' ]
+
+> arr2
+[ 'bar', 'baz', 'foo' ]
+
+> arr3.sort((a, b) => a.length - b.length)
+[ 'a', 'b', 'c', 'foo', 'bar', 'baz' ]
+
+> arr3
+[ 'a', 'b', 'c', 'foo', 'bar', 'baz' ]
+
+> for(let i = 0; i < arr2.length; i++) { console.log(arr2[i]) }
+bar
+baz
+foo
+undefined
+
+> arr2.forEach(console.log)
+bar 0 [ 'bar', 'baz', 'foo' ]
+baz 1 [ 'bar', 'baz', 'foo' ]
+foo 2 [ 'bar', 'baz', 'foo' ]
+undefined
+
+> arr2.map(e => e + e)
+[ 'barbar', 'bazbaz', 'foofoo' ]
+
+> arr2.filter(e => e.startsWith('b'))
+[ 'bar', 'baz' ]
+
+> arr2.find(e => e.startsWith('b'))
+'bar'
+
+> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+arr2.find( e => {
+  console.log(e)
+  return e.endsWith('z')
+})
+bar
+baz
+'baz'
+
+> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+class Foo {
+        #privateField = 1;
+        publicField = 2;
+        static #staticPrivateField = 3;
+        static staticPublicField = 4;
+
+        constructor(parameter) {
+                this.fieldInitializeedInConstructor = parameter;
+                console.log("Foo constructor");
+        }
+
+        get #computed() {
+                return this.publicField * 2;
+        }
+
+        get computed() {
+                return this.#computed;
+        }
+
+        set #computed(value) {
+                this.publicField = value / 2;
+        }
+
+        set computed(value) {
+                this.#computed = value;
+        }
+
+        #privateMethod() {
+                return this.#privateField;
+        }
+
+        publicMethod() {
+                return this.#privateField;
+        }
+
+        static #staticPrivateMethod() {
+                return this.#privateField;
+        }
+
+        static staticPublicMethod() {
+                return this.#staticPrivateField;
+        }
+}
+
+undefined
+
+> const fooInstance = new Foo(100)
+Foo constructor
+undefined
+
+> fooInstance.#privateField;
+fooInstance.#privateField;
+           ^
+
+Uncaught:
+SyntaxError: Private field '#privateField' must be declared in an enclosing class
+
+> fooInstance.publicField
+2
+
+> fooInstance.fieldInitializeedInConstructor
+100
+
+> fooInstance.#computed;
+fooInstance.#computed;
+           ^
+
+Uncaught SyntaxError: Private field '#computed' must be declared in an enclosing class
+
+> fooInstance.computed
+4
+
+> fooInstance.#computed = 10
+fooInstance.#computed = 10
+           ^
+
+Uncaught SyntaxError: Private field '#computed' must be declared in an enclosing class
+
+> fooInstance.computed = 10
+10
+
+> fooInstance.computed
+10
+
+> fooInstance.publicField
+5
+
+> fooInstance.#privateMethod();
+fooInstance.#privateMethod();
+           ^
+
+Uncaught:
+SyntaxError: Private field '#privateMethod' must be declared in an enclosing class
+
+> fooInstance.publicMethod()
+1
+
+> Foo.#staticPrivateField;
+Foo.#staticPrivateField;
+   ^
+
+Uncaught:
+SyntaxError: Private field '#staticPrivateField' must be declared in an enclosing class
+
+> Foo.staticPublicField
+4
+
+> Foo.#staticPrivateMethod();
+Foo.#staticPrivateMethod();
+   ^
+
+Uncaught:
+SyntaxError: Private field '#staticPrivateMethod' must be declared in an enclosing class
+
+> Foo.staticPublicMethod()
+3
+
+> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+class Bar extends Foo {
+        constructor(parameter) {
+                super(parameter);
+                this.subClassPublicField = 100;
+                console.log("Bar constructor");
+        }
+
+        publicMethod() {
+                return super.publicMethod() * this.subClassPublicField;
+        }
+}
+
+undefined
+
+> const barInstance = new Bar(100)
+Foo constructor
+Bar constructor
+undefined
+
+> barInstance.publicField
+2
+
+> barInstance.subClassPublicField
+100
+
+> barInstance.publicMethod()
+100
+
+> Bar.staticPublicField
+4
+
+> Bar.staticPublicMethod()
+Uncaught:
+TypeError: Cannot read private member #staticPrivateField from an object whose class did not declare it
+    at Bar.staticPublicMethod (REPL1:41:29)
+
+> Object.getOwnPropertyNames(Foo.prototype)
+[ 'constructor', 'computed', 'publicMethod' ]
+
+> Foo.prototype.publicMethod
+[Function: publicMethod]
+
+> fooInstance.__proto__ === Foo.prototype
+true
+
+> fooInstance instanceof Foo
+true
+
+> const plainObject = {}
+undefined
+
+> plainObject instanceof Foo
+false
+
+> plainObject.__proto__ = Foo.prototype
+{}
+
+> plainObject instanceof Foo
+true
+
+> barInstance instanceof Foo
+true
+
+> barInstance.__proto__ === Bar.prototype
+true
+
+> Object.getOwnPropertyNames(Bar.prototype)
+[ 'constructor', 'publicMethod' ]
+
+> barInstance.__proto__ === Foo.protptype
+false
+
+> barInstance.__proto__.__proto__ === Foo.prototype
+true
+
+> fooInstance.__proto__.__proto__ === Object.prototype
+true
+
+> fooInstance instanceof Object
+true
+
+> barInstance.__proto__.__proto__.__proto__ === Object.prototype
+true
+
+> barInstance instanceof Object
+true
+
+> 0 === ''
+false
+
+> 0 == ''
+true
+
+> { foo: 1 } === { foo: 1 }
+false
+
+> 1 === 1
+true
+
+> { foo: 1 } === { foo: 1 }
+false
+
+> const obj5 = { foo: 1 }
+undefined
+
+> const obj6 = obj5
+undefined
+
+> obj5 === obj6
+true
+
+> const math = require('./1/4/cjs-math')
+undefined
+
+> math.add(1,2)
+3
+
+> const math2 = require('./1/4/cjs-math')
+undefined
+
+> math2.subtract(1,2)
+Uncaught TypeError: math2.subtract is not a function
+
+> delete require.cache[require.resolve('./1/4/cjs-math')]
+true
+
+> const math3 = require('./1/4/cjs-math')
+undefined
+
+> math3.subtract(1,2)
+-1
+
+> const module = { exports: {}}
+undefined
+
+> let exports = module.exports
+undefined
+
+> exports.foo = 'foo'
+'foo'
+
+> module.exports
+{ foo: 'foo' }
+
+> exports = { bar: 'bar' }
+{ bar: 'bar' }
+
+> module.exports
+{ foo: 'foo' }
+
+> require('./1/4/cjs-math2')
+{ add: [Function (anonymous)], subtract: [Function (anonymous)] }
+
+> require('./1/4/key-value')
+{ key: 'value' }
+
+> require('fs')
+{
+  appendFile: [Function: appendFile],
+  # ... (省略)
+
+> fs
+{
+  appendFile: [Function: appendFile],
+  # ... (省略)
+
+> require('./1/4/cjs-filename-dirname')
+{
+  __filename: '/Users/d4rj3311n6/Documents/workspace/github.com/grimoh/hands-on-nodejs/1/4/cjs-filename-dirname.js',
+  __dirname: '/Users/d4rj3311n6/Documents/workspace/github.com/grimoh/hands-on-nodejs/1/4'
+}
