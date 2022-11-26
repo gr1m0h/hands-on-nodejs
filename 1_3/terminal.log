@@ -1,0 +1,84 @@
+> node
+Welcome to Node.js v18.4.0.
+Type ".help" for more information.
+
+> 24 * 60 * 60
+86400
+
+> console
+console
+
+> console.log(24 * 60 * 60)
+86400
+undefined
+> let total = 0
+undefined
+> for (let i = 1; i <= 10; i++) {
+... total += i
+... console.log(`${i}までの和: ${total}`)
+... }
+1までの和: 1
+2までの和: 3
+3までの和: 6
+4までの和: 10
+5までの和: 15
+6までの和: 21
+7までの和: 28
+8までの和: 36
+9までの和: 45
+10までの和: 55
+undefined
+
+> total
+55
+
+> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+let total2 = 0
+for (let i = 1; i <= 10; i++) {
+  total2 +=i
+  console.log(`${i}までの和: ${total2}`)
+}
+total2
+
+1までの和: 1
+2までの和: 3
+3までの和: 6
+4までの和: 10
+5までの和: 15
+6までの和: 21
+7までの和: 28
+8までの和: 36
+9までの和: 45
+10までの和: 55
+55
+
+> ['for', 'bar'].map(str => str + str)
+[ 'forfor', 'barbar' ]
+
+> _[1]
+'barbar'
+
+> _.length
+6
+
+> _ *2
+12
+
+> _.doSomething()
+Uncaught TypeError: _.doSomething is not a function
+
+> _error.message
+'_.doSomething is not a function'
+
+> cons
+const
+
+console      constants
+
+constructor
+
+> .exit
+
+> node 1_3/seconds-in-a-day.js
+86400
